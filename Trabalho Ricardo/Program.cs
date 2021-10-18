@@ -1,7 +1,7 @@
-﻿using System.Xml.Serialization;
-using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
 
 
 
@@ -138,14 +138,6 @@ namespace TrabalhoRicardo
 
                         Cliente clientes = new Cliente(idCliente,nomeCliente,endereco,telefone,cpf);
 
-                        //Serializar
-                        XmlSerializer xmlSerializer = new XmlSerializer(typeof(Cliente), new Type[] { });
-                        Stream Mystream = new FileStream("myDoc.xml", FileMode.Create, FileAccess.Write);
-                        xmlSerializer.Serialize(Mystream, clientes);
-                        Mystream.Close();
-
-                        Stream stream = new FileStream("myDoc.xml", FileMode.Open, FileAccess.Read);
-                        Cliente clientes1 = (Cliente)xmlSerializer.Deserialize(stream);
                         listaCliente.Add(clientes);
                         Console.WriteLine("\nCliente adicionado com sucesso!");
 
@@ -237,13 +229,13 @@ namespace TrabalhoRicardo
                             Console.WriteLine("\n Lista De Clientes");
                             foreach (Cliente c in listaCliente)
                             {
-                                Console.WriteLine($"\n Id: {c.Id},  Nome:  {c.Nome}, Endereço:  {c.Endereco}, Telefone:  {c.Telefone}, CPF: {c.Cpf}");
+                                Console.WriteLine($"\n Id: {c.Id},  \nNome:  {c.Nome}, \nEndereço:  {c.Endereco}, \nTelefone:  {c.Telefone}, \nCPF: {c.Cpf}");
                             }
                             Console.WriteLine("Pressione qualquer tecla para proseguir..");
                             Console.ReadKey();
                         }
                         else
-                            Console.WriteLine("\nNão há clientes cadastrados.");
+                            Console.WriteLine("\n Não há clientes cadastrados.");
 
                         break;
 
@@ -260,7 +252,7 @@ namespace TrabalhoRicardo
                             Console.WriteLine("\n Esses são os Vendedores");
                             for (int i = 0; i < listaVendedor.Count; i++)
                             {
-                                Console.WriteLine($"Digite {i} para escolher o Vendedor: {listaEstoque[i].NomeEstoque} ");
+                                Console.WriteLine($"Digite {i} para escolher o Vendedor: {listaVendedor[i].Nome} ");
 
 
                             }
